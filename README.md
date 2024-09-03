@@ -1,6 +1,10 @@
 # EcommerceFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.7.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 16.1.7.
+
+Se utilizo la suite de Devextreme para todo el manejo de formularios y componentes: https://js.devexpress.com/Angular/
+
+Se utilizo como template principal AdminLTE: https://github.com/erdkse/adminlte-3-angular?tab=readme-ov-file
 
 ## Development server
 
