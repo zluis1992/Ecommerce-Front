@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/zluis1992/Ecommerce-Front/compare/v1.4.0...v1.4.1) (2024-09-03)
+
+
+### Bug Fixes
+
+* Ajustes menores en el diseño de la interfaz ([85e4fd9](https://github.com/zluis1992/Ecommerce-Front/commit/85e4fd95cbdbbb5822b21b5cf7c4695bf6b400b3))
+
 # [1.4.0](https://github.com/zluis1992/Ecommerce-Front/compare/v1.3.1...v1.4.0) (2024-09-03)
 
 
