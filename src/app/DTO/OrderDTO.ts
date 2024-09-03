@@ -13,7 +13,7 @@ export class OrderDTO {
    *
    */
   constructor() {
-    this.id = '';
+    this.id = null;
     this.orderDate = new Date();
     this.productId = '';
     this.productName = '';

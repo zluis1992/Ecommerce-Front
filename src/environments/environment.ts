@@ -7,7 +7,7 @@ export const environment = {
   APIPRODUCT_URL:
     'https://productapi-efcwb3e2fch0dtez.eastus-01.azurewebsites.net/api/',
   APIORDER_URL:
-    'https://productapi-efcwb3e2fch0dtez.eastus-01.azurewebsites.net/api/',
+    'https://orderapi-ayhdgadef6frdydp.eastus-01.azurewebsites.net/api/',
   ASSET_PATH: './assets/img/',
   HORAINICIODEFECTO: '06:00',
   HORAFINDEFECTO: '22:00',

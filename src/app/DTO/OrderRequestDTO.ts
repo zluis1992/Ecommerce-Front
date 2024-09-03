@@ -10,7 +10,7 @@ export class OrderRequestDTO {
    *
    */
   constructor() {
-    this.id = '';
+    this.id = null;
     this.orderDate = new Date();
     this.productId = '';
     this.quantity = 1;
