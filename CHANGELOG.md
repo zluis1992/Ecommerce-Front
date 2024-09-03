@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/zluis1992/Ecommerce-Front/compare/v1.3.1...v1.4.0) (2024-09-03)
+
+
+### Features
+
+* Añadir CRUD ordenes ([0c5dbc6](https://github.com/zluis1992/Ecommerce-Front/commit/0c5dbc654c7fe965c0004d53de0ea9a2814cf8ce))
+
 ## [1.3.1](https://github.com/zluis1992/Ecommerce-Front/compare/v1.3.0...v1.3.1) (2024-09-03)
 
 
