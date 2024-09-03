@@ -1,0 +1,7 @@
+<app-header *ngIf="showAdminLte"></app-header>
+<app-sidebar *ngIf="showAdminLte"></app-sidebar>
+<div class="content-wrapper">
+    <app-load-panel></app-load-panel>
+    <router-outlet></router-outlet>
+</div>
+<app-footer *ngIf="showAdminLte"></app-footer>

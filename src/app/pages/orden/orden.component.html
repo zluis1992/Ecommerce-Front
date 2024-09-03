@@ -1,0 +1,47 @@
+<app-header-content [title]="'Ordenes'"></app-header-content>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="col-lg-3 mb-3">
+          <dx-button type="success" text="Nueva orden" icon="fa fa-plus"
+            (onClick)="btnCrearOrder()"></dx-button>
+        </div>
+        <div class="card">
+          <div id="data-grid-demo">
+            <dx-data-grid id="gridContainer" [dataSource]="orders" [showBorders]="true" [rowAlternationEnabled]="true"
+              [columnAutoWidth]="true" [showColumnLines]="true" [showRowLines]="true">
+              <dx-scroll-view width="100%" height="100%" columnRenderingMode="virtual"></dx-scroll-view>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxi-column dataField="orderDate" caption="Fecha" dataType="date"></dxi-column>
+              <dxi-column dataField="productName" caption="Producto"></dxi-column>
+              <dxi-column dataField="quantity" caption="Cantidad" dataType="number"></dxi-column>
+              <dxi-column dataField="unitValue" caption="Valor unitario" dataType="number"></dxi-column>
+              <dxi-column dataField="totalValue" caption="Valor total" dataType="number"></dxi-column>
+              <dxi-column caption="Acciones" cellTemplate="fichaCellTemplate" alignment="center">
+                <div *dxTemplate="let data of 'fichaCellTemplate'" style="display: block" class="table-content-icons">
+                  <dx-button icon="fas fa-eye" class="mr-1" stylingMode="outlined"
+                    (onClick)="actionOrder(data.data, 'VIEW')" hint="Visualizar"></dx-button>
+                  <dx-button icon="fas fa-edit" stylingMode="outlined" type="success"
+                    (onClick)="actionOrder(data.data, 'EDIT')" hint="Procesar"></dx-button>
+                  <dx-button icon="fas fa-window-close"class="positionButon ml-1" hint="Eliminar" type="danger" 
+                  (onClick)="deleteOrder(data.data)"></dx-button>
+                </div>
+              </dxi-column>
+            </dx-data-grid>
+          </div>
+
+          <!-- Form producto -->
+          <dx-popup [width]="'600'" [height]="'50%'" [showTitle]="true" [title]="titulo"
+            [dragEnabled]="true" [hideOnOutsideClick]="true" [showCloseButton]="true" [(visible)]="popupVisible">
+            <dx-scroll-view width="100%" height="100%">
+              <app-form-order (crudEvent)="crudOrder($event)" [crud]="crud"></app-form-order>
+            </dx-scroll-view>
+          </dx-popup>
+          <!-- Fin Form producto -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

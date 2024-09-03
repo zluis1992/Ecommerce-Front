@@ -1,0 +1,13 @@
+#data-grid-demo {
+  zoom: 80% !important;
+}
+
+.dx-datagrid-action{
+  background-color: #343a40;
+  color: white;
+}
+
+/* ::ng-deep .dx-datagrid-headers {
+    background-color: rgb(52, 52, 201) !important;
+    color: white !important;
+} */

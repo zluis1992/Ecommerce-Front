@@ -1,0 +1,21 @@
+.desktop {
+  ion-router-outlet {
+    margin-left: 170px;
+  }
+
+  .logo {
+    max-height: 40px;
+  }
+
+  ion-toolbar {
+    --background: #374168;
+  }
+
+  .link {
+    --color: var(--ion-color-light);
+  }
+
+  .active-link {
+    --color: var(--ion-color-primary);
+  }
+}

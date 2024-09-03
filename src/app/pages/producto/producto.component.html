@@ -1,0 +1,45 @@
+<app-header-content [title]="'Productos'"></app-header-content>
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="col-lg-3 mb-3">
+          <dx-button type="success" text="Nuevo producto" icon="fa fa-plus"
+            (onClick)="btnCrearProduct()"></dx-button>
+        </div>
+        <div class="card">
+          <div id="data-grid-demo">
+            <dx-data-grid id="gridContainer" [dataSource]="products" [showBorders]="true" [rowAlternationEnabled]="true"
+              [columnAutoWidth]="true" [showColumnLines]="true" [showRowLines]="true">
+              <dx-scroll-view width="100%" height="100%" columnRenderingMode="virtual"></dx-scroll-view>
+              <dxo-filter-row [visible]="true"></dxo-filter-row>
+              <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+              <dxi-column dataField="name" caption="Nombre"></dxi-column>
+              <dxi-column dataField="description" caption="Descripción"></dxi-column>
+              <dxi-column dataField="price" caption="Precio" dataType="number"></dxi-column>
+              <dxi-column caption="Acciones" cellTemplate="fichaCellTemplate" alignment="center">
+                <div *dxTemplate="let data of 'fichaCellTemplate'" style="display: block" class="table-content-icons">
+                  <dx-button icon="fas fa-eye" class="mr-1" stylingMode="outlined"
+                    (onClick)="actionProduct(data.data, 'VIEW')" hint="Visualizar"></dx-button>
+                  <dx-button icon="fas fa-edit" stylingMode="outlined" type="success"
+                    (onClick)="actionProduct(data.data, 'EDIT')" hint="Procesar"></dx-button>
+                  <dx-button icon="fas fa-window-close"class="positionButon ml-1" hint="Eliminar" type="danger" 
+                  (onClick)="deleteProduct(data.data)"></dx-button>
+                </div>
+              </dxi-column>
+            </dx-data-grid>
+          </div>
+
+          <!-- Form producto -->
+          <dx-popup [width]="'600'" [height]="'50%'" [showTitle]="true" [title]="titulo"
+            [dragEnabled]="true" [hideOnOutsideClick]="true" [showCloseButton]="true" [(visible)]="popupVisible">
+            <dx-scroll-view width="100%" height="100%">
+              <app-form-product (crudEvent)="crudProduct($event)" [crud]="crud"></app-form-product>
+            </dx-scroll-view>
+          </dx-popup>
+          <!-- Fin Form producto -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

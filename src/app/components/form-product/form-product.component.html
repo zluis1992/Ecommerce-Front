@@ -1,0 +1,24 @@
+<form (submit)="submit($event)">
+  <dx-form id="form" name="form" [colCount]="4" [(formData)]="crud.product" labelLocation="top" [readOnly]="modoView">
+
+    <dxi-item itemType="group" [colCount]="4" [colSpan]="4">
+
+      <dxi-item dataField="name" [colSpan]="2" [label]="{text:'Nombre'}">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+      </dxi-item>
+      <dxi-item  dataField="price" editorType="dxNumberBox" [colSpan]="2" [label]="{text:'Precio'}">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+      </dxi-item>
+      <dxi-item  dataField="description" editorType="dxTextArea" [colSpan]="4" [label]="{text:'Descripción'}">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+      </dxi-item>
+    </dxi-item>
+
+    <dxi-item itemType="group" [colCount]="4" [colSpan]="4" *ngIf="!modoView">
+      <dxi-item [colSpan]="4" itemType="button" horizontalAlignment="center" verticalAlignment="bottom"
+        [buttonOptions]="buttonOptionsSave">
+      </dxi-item>
+    </dxi-item>
+  </dx-form>
+</form>
+
