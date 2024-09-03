@@ -17,7 +17,7 @@
               <dxi-column dataField="name" caption="Nombre"></dxi-column>
               <dxi-column dataField="description" caption="Descripción"></dxi-column>
               <dxi-column dataField="price" caption="Precio" dataType="number"></dxi-column>
-              <dxi-column caption="Acciones" cellTemplate="fichaCellTemplate" alignment="center">
+              <dxi-column caption="Acciones" cellTemplate="fichaCellTemplate" alignment="center" [width]="150">
                 <div *dxTemplate="let data of 'fichaCellTemplate'" style="display: block" class="table-content-icons">
                   <dx-button icon="fas fa-eye" class="mr-1" stylingMode="outlined"
                     (onClick)="actionProduct(data.data, 'VIEW')" hint="Visualizar"></dx-button>

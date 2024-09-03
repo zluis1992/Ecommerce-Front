@@ -59,9 +59,9 @@ export class ProductoComponent implements OnInit {
   private putUpdateProduct(crud: any): void {
     this.servicesService.setLoadingVisible(true)
     this.productService.putUpdateProduct(crud.product).subscribe((res) => {
-      this.servicesService.notify('producto editado exitosamente', 'success');
-      this.listarProductos();     
+      this.servicesService.notify('producto editado exitosamente', 'success');     
     });
+    this.listarProductos();
   }
 
   public crudProduct(crud: any): void {

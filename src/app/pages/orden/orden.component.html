@@ -19,7 +19,7 @@
               <dxi-column dataField="quantity" caption="Cantidad" dataType="number"></dxi-column>
               <dxi-column dataField="unitValue" caption="Valor unitario" dataType="number"></dxi-column>
               <dxi-column dataField="totalValue" caption="Valor total" dataType="number"></dxi-column>
-              <dxi-column caption="Acciones" cellTemplate="fichaCellTemplate" alignment="center">
+              <dxi-column caption="Acciones" cellTemplate="fichaCellTemplate" alignment="center"[width]="150">
                 <div *dxTemplate="let data of 'fichaCellTemplate'" style="display: block" class="table-content-icons">
                   <dx-button icon="fas fa-eye" class="mr-1" stylingMode="outlined"
                     (onClick)="actionOrder(data.data, 'VIEW')" hint="Visualizar"></dx-button>
