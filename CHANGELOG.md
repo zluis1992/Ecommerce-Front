@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/zluis1992/Ecommerce-Front/compare/v1.2.0...v1.3.0) (2024-09-03)
+
+
+### Features
+
+* Ajustes formulario ordenes, implementación de validaciones en los componentes front ([0ec3cc1](https://github.com/zluis1992/Ecommerce-Front/commit/0ec3cc181465c5600e0e1e720cb691df310e9d46))
+
 # [1.2.0](https://github.com/zluis1992/Ecommerce-Front/compare/v1.1.0...v1.2.0) (2024-09-03)
 
 
