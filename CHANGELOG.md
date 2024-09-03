@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/zluis1992/Ecommerce-Front/compare/v1.0.0...v1.1.0) (2024-09-03)
+
+
+### Features
+
+* Ajustes rutas angular ([d711621](https://github.com/zluis1992/Ecommerce-Front/commit/d71162193fc12cd55df8486b35edb23134c7d3ad))
+
 # 1.0.0 (2024-09-03)
 
 
