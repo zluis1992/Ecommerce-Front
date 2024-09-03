@@ -4,12 +4,13 @@
 
 export const environment = {
   production: false,
-  //APIPRODUCT_URL: 'https://alltedapi.senaarcadia.com.co/',
-  APIPRODUCT_URL: 'https://productapi-efcwb3e2fch0dtez.eastus-01.azurewebsites.net/api/',
-  APIORDER_URL: 'https://productapi-efcwb3e2fch0dtez.eastus-01.azurewebsites.net/api/',
+  APIPRODUCT_URL:
+    'https://productapi-efcwb3e2fch0dtez.eastus-01.azurewebsites.net/api/',
+  APIORDER_URL:
+    'https://productapi-efcwb3e2fch0dtez.eastus-01.azurewebsites.net/api/',
   ASSET_PATH: './assets/img/',
-  HORAINICIODEFECTO:'06:00',
-  HORAFINDEFECTO:'22:00'
+  HORAINICIODEFECTO: '06:00',
+  HORAFINDEFECTO: '22:00',
 };
 
 /*
