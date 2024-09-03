@@ -20,7 +20,7 @@ export class FormOrderComponent implements OnInit {
     order: new OrderRequestDTO(),
     action: 'INSERT',
   };
-
+  currentDate: Date = new Date();
   modoView: boolean = false;
   products: ProductDTO[] = [];
   formData: any = {};
@@ -28,14 +28,17 @@ export class FormOrderComponent implements OnInit {
   notifications: any[] = [];
 
   constructor(private productService: ProductService) {
+    const unitValue = 0;
+    const quantity = this.crud.order.quantity ?? 1;
+
     this.formData = {
       id: this.crud.order.id,
       orderDate: this.crud.order.orderDate,
       productId: this.crud.order.productId,
       productName: '',
-      quantity: this.crud.order.quantity,
-      unitValue: 0,
-      totalValue: this.formData.unitValue * this.formData.quantity,
+      quantity: quantity,
+      unitValue: unitValue,
+      totalValue: unitValue * quantity,
     };
   }
 
@@ -52,13 +55,11 @@ export class FormOrderComponent implements OnInit {
     });
   }
   onProductIdValueChanged(event: any) {
-    console.log("entré");
-    
-    const selectedProductId = event.value;
+    if (!!event.selectedItem) this.formData.productId = event.selectedItem.id;
+    const selectedProductId = event.selectedItem.id;
     const selectedProduct = this.products.find(
       (product) => product.id === selectedProductId
     );
-
     if (selectedProduct) {
       this.formData.unitValue = selectedProduct.price;
       this.formData.totalValue = selectedProduct.price * this.formData.quantity;
@@ -80,4 +81,9 @@ export class FormOrderComponent implements OnInit {
     width: '200',
     useSubmitBehavior: true,
   };
+
+  onQuantityChanged(event: any) {
+    this.formData.quantity = event.value;
+    this.formData.totalValue = this.formData.quantity * this.formData.unitValue;
+  }
 }

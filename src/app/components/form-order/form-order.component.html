@@ -3,44 +3,41 @@
 
     <dxi-item itemType="group" [colCount]="4" [colSpan]="4">
 
-      <dxi-item editorType="dxDateBox" [colSpan]="2" dataField="orderDate" [editorOptions]="{ type: 'date', displayFormat: 'dd/MM/yyyy' }" [label]="{text:'Fecha de la orden'}" >
-        <dxi-validation-rule type="required" ></dxi-validation-rule>
-      </dxi-item>
-      <dxi-item dataField="productId" 
-        [colSpan]="2" 
-        [label]="{ text: 'Producto deseado' }" 
-        editorType="dxSelectBox"
-        [editorOptions]="{ 
-          dataSource: products, 
-          displayExpr: 'name', 
-          valueExpr: 'id', 
-          searchEnabled:true,
-          showClearButton:'true' }"
-          (onSelectionChanged)="onProductIdValueChanged($event)">
+      <dxi-item editorType="dxDateBox" [colSpan]="2" dataField="orderDate"
+        [editorOptions]="{ type: 'date', displayFormat: 'dd/MM/yyyy', max: currentDate }"
+        [label]="{text:'Fecha de la orden'}">
         <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-item>
-      
 
-      
-    </dxi-item>
+      <dxi-item dataField="productId" alignment="bottom" [colSpan]="2" [label]="{ text: 'Producto deseado' }"
+        isRequired="true">
+        <div *dxTemplate>
+          <dx-select-box [disabled]="modoView" [dataSource]="products" [value]="formData.productId" id="id"
+            displayExpr="name" valueExpr="id" (onSelectionChanged)="onProductIdValueChanged($event)"
+            [showClearButton]="true">
+          </dx-select-box>
+        </div>
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+      </dxi-item>
 
-    <dxi-item
-      dataField="unitValue"
-      [colSpan]="2"
-      [label]="{ text: 'Valor unitario' }"
-      editorType="dxTextBox">
-    </dxi-item>
-    <dxi-item
-      dataField="quantity"
-      [colSpan]="2"
-      [label]="{ text: 'Cantidad' }"
-      editorType="dxTextBox">
-    </dxi-item>
-    <dxi-item
-      dataField="totalValue"
-      [colSpan]="2"
-      [label]="{ text: 'Valor total' }"
-      editorType="dxTextBox">
+      <dxi-item dataField="quantity" [colSpan]="2" [label]="{text:'Cantidad'}" isRequired="true">
+        <div *dxTemplate>
+          <dx-number-box [value]="formData.quantity" [disabled]="modoView" [min]="1"
+            (onValueChanged)="onQuantityChanged($event)">
+          </dx-number-box>
+        </div>
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+      </dxi-item>
+
+      <dxi-item dataField="unitValue" [colSpan]="2" editorType="dxNumberBox"
+        [editorOptions]="{ type:'currency', readOnly: true }" [label]="{text:'Valor unitario ($COP)'}">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+      </dxi-item>
+
+      <dxi-item dataField="totalValue" [colSpan]="2" editorType="dxNumberBox"
+        [editorOptions]="{ type:'currency', readOnly: true }" [label]="{text:'Valor total ($COP)'}">
+        <dxi-validation-rule type="required"></dxi-validation-rule>
+      </dxi-item>
     </dxi-item>
 
     <dxi-item itemType="group" [colCount]="4" [colSpan]="4" *ngIf="!modoView">
@@ -48,5 +45,6 @@
         [buttonOptions]="buttonOptionsSave">
       </dxi-item>
     </dxi-item>
+
   </dx-form>
 </form>

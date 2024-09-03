@@ -6,10 +6,11 @@
       <dxi-item dataField="name" [colSpan]="2" [label]="{text:'Nombre'}">
         <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-item>
-      <dxi-item  dataField="price" editorType="dxNumberBox" [colSpan]="2" [label]="{text:'Precio'}">
+      <dxi-item dataField="price" editorType="dxNumberBox" [colSpan]="2" [label]="{text:'Precio'}"
+        [editorOptions]="{ min: 1 }">
         <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-item>
-      <dxi-item  dataField="description" editorType="dxTextArea" [colSpan]="4" [label]="{text:'Descripción'}">
+      <dxi-item dataField="description" editorType="dxTextArea" [colSpan]="4" [label]="{text:'Descripción'}">
         <dxi-validation-rule type="required"></dxi-validation-rule>
       </dxi-item>
     </dxi-item>
@@ -21,4 +22,3 @@
     </dxi-item>
   </dx-form>
 </form>
-
