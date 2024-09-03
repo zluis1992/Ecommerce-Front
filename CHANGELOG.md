@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/zluis1992/Ecommerce-Front/compare/v1.3.0...v1.3.1) (2024-09-03)
+
+
+### Bug Fixes
+
+* Ajustar order DTO para que corresponda con el payload correcto y ajustes URL de api order ([8550ece](https://github.com/zluis1992/Ecommerce-Front/commit/8550ece88ab2edfe5627a34d7954039a3c5d41c7))
+
 # [1.3.0](https://github.com/zluis1992/Ecommerce-Front/compare/v1.2.0...v1.3.0) (2024-09-03)
 
 
