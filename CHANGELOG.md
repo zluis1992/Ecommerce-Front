@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/zluis1992/Ecommerce-Front/compare/v1.1.0...v1.2.0) (2024-09-03)
+
+
+### Features
+
+* Cambios en el readme y corrección error refrescar paginas ([af72696](https://github.com/zluis1992/Ecommerce-Front/commit/af72696c419171fe490f1b3f1779c94ed1a695b8))
+
 # [1.1.0](https://github.com/zluis1992/Ecommerce-Front/compare/v1.0.0...v1.1.0) (2024-09-03)
 
 
