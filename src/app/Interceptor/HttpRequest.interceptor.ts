@@ -44,9 +44,6 @@ export class HttpRequestInterceptor implements HttpInterceptor {
         return res;
       }),
       catchError((error: HttpErrorResponse) => {
-        /* console.log(error.error.message); */
-        
-        
         let errorMessage = 'Error desconocido';
         // Error de red o cliente
         if (error.error instanceof ErrorEvent){

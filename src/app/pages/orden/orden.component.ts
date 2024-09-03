@@ -27,7 +27,6 @@ export class OrdenComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.servicesService.setLoadingVisible(true);
     this.listarOrdenes();
     this.iniciarTitulo();
   }
@@ -46,26 +45,25 @@ export class OrdenComponent implements OnInit {
   }
 
   private listarOrdenes(): void {
-    this.orders = [];
-    this.servicesService.setLoadingVisible(false)
-    /* this.orderService.getListOrders().subscribe((response: any) => {
+    this.servicesService.setLoadingVisible(true);
+    this.orderService.getListOrders().subscribe((response: any) => {
       this.orders = response;
-      this.servicesService.setLoadingVisible(false);
-    }); */
-  }
-
-  private postInsertOrder(crud: any): void {
-    this.orderService.postInsertOrder(crud.order).subscribe((res) => {
-      this.servicesService.notify('orden creado exitosamente', 'success');
-      this.listarOrdenes();
       this.servicesService.setLoadingVisible(false);
     });
   }
-  private putUpdateOrder(crud: any): void {
-    this.orderService.putUpdateOrder(crud.order).subscribe((res) => {
-      this.servicesService.notify('orden editado exitosamente', 'success');
+
+  private postInsertOrder(crud: any): void {
+    this.servicesService.setLoadingVisible(true);
+    this.orderService.postInsertOrder(crud.order).subscribe((res) => {
+      this.servicesService.notify('orden creada exitosamente', 'success');
       this.listarOrdenes();
-      this.servicesService.setLoadingVisible(false);
+    });
+  }
+  private putUpdateOrder(crud: any): void {
+    this.servicesService.setLoadingVisible(true);
+    this.orderService.putUpdateOrder(crud.order).subscribe((res) => {
+      this.servicesService.notify('orden editada exitosamente', 'success');
+      this.listarOrdenes();
     });
   }
 
@@ -85,19 +83,18 @@ export class OrdenComponent implements OnInit {
     }
   }
   
-  deleteOrder( crud : any ) {
+  deleteOrder( crud : any ) { 
     Swal.fire({
-      title: `¿Estás seguro que deseas eliminar el orden ${crud.name}?`,
+      title: `¿Estás seguro que deseas eliminar la orden?`,
       showCancelButton: true,
       confirmButtonText: 'Si, eliminar',
       cancelButtonText: `Mejor no`,
     }).then((result) => {
       if (result.isConfirmed) {
-
+        this.servicesService.setLoadingVisible(true)
         this.orderService.deleteUpdateOrders(crud.id).subscribe((res) => {
           this.servicesService.notify('orden eliminado exitosamente', 'success');
           this.listarOrdenes();
-          this.servicesService.setLoadingVisible(false);
         });
       }
     })

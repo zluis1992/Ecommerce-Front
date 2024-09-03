@@ -24,7 +24,6 @@ export class ProductoComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.servicesService.setLoadingVisible(true);
     this.listarProductos();
     this.iniciarTitulo();
   }
@@ -43,6 +42,7 @@ export class ProductoComponent implements OnInit {
   }
 
   private listarProductos(): void {
+    this.servicesService.setLoadingVisible(true)
     this.productService.getListProductos().subscribe((response: any) => {
       this.products = response;
       this.servicesService.setLoadingVisible(false);
@@ -50,17 +50,17 @@ export class ProductoComponent implements OnInit {
   }
 
   private postInsertProduct(crud: any): void {
+    this.servicesService.setLoadingVisible(true)
     this.productService.postInsertProduct(crud.product).subscribe((res) => {
       this.servicesService.notify('producto creado exitosamente', 'success');
       this.listarProductos();
-      this.servicesService.setLoadingVisible(false);
     });
   }
   private putUpdateProduct(crud: any): void {
+    this.servicesService.setLoadingVisible(true)
     this.productService.putUpdateProduct(crud.product).subscribe((res) => {
       this.servicesService.notify('producto editado exitosamente', 'success');
-      this.listarProductos();
-      this.servicesService.setLoadingVisible(false);
+      this.listarProductos();     
     });
   }
 
@@ -88,11 +88,10 @@ export class ProductoComponent implements OnInit {
       cancelButtonText: `Mejor no`,
     }).then((result) => {
       if (result.isConfirmed) {
-
+        this.servicesService.setLoadingVisible(true)
         this.productService.deleteUpdateProducts(crud.id).subscribe((res) => {
           this.servicesService.notify('producto eliminado exitosamente', 'success');
           this.listarProductos();
-          this.servicesService.setLoadingVisible(false);
         });
       }
     })

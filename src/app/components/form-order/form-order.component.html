@@ -1,5 +1,5 @@
 <form (submit)="submit($event)">
-  <dx-form id="form" name="form" [colCount]="4" [(formData)]="formData" labelLocation="top" [readOnly]="modoView">
+  <dx-form id="form" name="form" [colCount]="4" [(formData)]="crud.order" labelLocation="top" [readOnly]="modoView">
 
     <dxi-item itemType="group" [colCount]="4" [colSpan]="4">
 
@@ -12,7 +12,7 @@
       <dxi-item dataField="productId" alignment="bottom" [colSpan]="2" [label]="{ text: 'Producto deseado' }"
         isRequired="true">
         <div *dxTemplate>
-          <dx-select-box [disabled]="modoView" [dataSource]="products" [value]="formData.productId" id="id"
+          <dx-select-box [disabled]="modoView" [dataSource]="products" [value]="crud.order.productId" id="id"
             displayExpr="name" valueExpr="id" (onSelectionChanged)="onProductIdValueChanged($event)"
             [showClearButton]="true">
           </dx-select-box>
@@ -22,7 +22,7 @@
 
       <dxi-item dataField="quantity" [colSpan]="2" [label]="{text:'Cantidad'}" isRequired="true">
         <div *dxTemplate>
-          <dx-number-box [value]="formData.quantity" [disabled]="modoView" [min]="1"
+          <dx-number-box [value]="crud.order.quantity" [disabled]="modoView" [min]="1"
             (onValueChanged)="onQuantityChanged($event)">
           </dx-number-box>
         </div>

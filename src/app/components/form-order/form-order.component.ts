@@ -7,8 +7,9 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { ProductDTO } from '../../DTO/ProductDTO';
-import { OrderRequestDTO } from '../../DTO/OrderRequestDTO';
 import { ProductService } from '../../services/product.service';
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-form-order',
   templateUrl: './form-order.component.html',
@@ -17,13 +18,14 @@ import { ProductService } from '../../services/product.service';
 export class FormOrderComponent implements OnInit {
   @Output() crudEvent: EventEmitter<any> = new EventEmitter<any>();
   @Input() crud: any = {
-    order: new OrderRequestDTO(),
+    order: {},
     action: 'INSERT',
   };
   currentDate: Date = new Date();
+  soloDate: string = '';
   modoView: boolean = false;
   products: ProductDTO[] = [];
-  formData: any = {};
+
   /* Notifications */
   notifications: any[] = [];
 
@@ -31,14 +33,16 @@ export class FormOrderComponent implements OnInit {
     const unitValue = 0;
     const quantity = this.crud.order.quantity ?? 1;
 
-    this.formData = {
-      id: this.crud.order.id,
-      orderDate: this.crud.order.orderDate,
-      productId: this.crud.order.productId,
+    const newProperties = {
       productName: '',
       quantity: quantity,
       unitValue: unitValue,
       totalValue: unitValue * quantity,
+    };
+
+    this.crud.order = {
+      ...this.crud.order,
+      ...newProperties,
     };
   }
 
@@ -54,24 +58,41 @@ export class FormOrderComponent implements OnInit {
       this.products = response;
     });
   }
+
   onProductIdValueChanged(event: any) {
-    if (!!event.selectedItem) this.formData.productId = event.selectedItem.id;
-    const selectedProductId = event.selectedItem.id;
-    const selectedProduct = this.products.find(
-      (product) => product.id === selectedProductId
-    );
-    if (selectedProduct) {
-      this.formData.unitValue = selectedProduct.price;
-      this.formData.totalValue = selectedProduct.price * this.formData.quantity;
-    } else {
-      this.formData.unitValue = 0;
+    if (event && event.selectedItem) {
+      const selectedProductId = event.selectedItem.id;
+      if (selectedProductId !== null && selectedProductId !== undefined) {
+        this.crud.order.productId = selectedProductId;
+
+        const selectedProduct = this.products.find(
+          (product) => product.id === selectedProductId
+        );
+
+        if (selectedProduct) {
+          this.crud.order.unitValue = selectedProduct.price;
+          this.crud.order.totalValue =
+            selectedProduct.price * (this.crud.order.quantity || 0);
+        } else {
+          this.crud.order.unitValue = 0;
+          this.crud.order.totalValue = 0;
+        }
+      }
     }
   }
 
   submit(event: Event) {
     event.preventDefault();
+
+    this.crud.order = {
+      id: this.crud.order.id,
+      orderDate: moment(this.crud.order.orderDate).format('YYYY-MM-DD'),
+      productId: this.crud.order.productId,
+      quantity: this.crud.order.quantity,
+    };
+
     this.crudEvent.emit({ ...this.crud });
-    this.crud.order = new OrderRequestDTO();
+    this.crud.order = {};
   }
 
   buttonOptionsSave = {
@@ -83,7 +104,8 @@ export class FormOrderComponent implements OnInit {
   };
 
   onQuantityChanged(event: any) {
-    this.formData.quantity = event.value;
-    this.formData.totalValue = this.formData.quantity * this.formData.unitValue;
+    this.crud.order.quantity = event.value;
+    this.crud.order.totalValue =
+      this.crud.order.quantity * this.crud.order.unitValue;
   }
 }
